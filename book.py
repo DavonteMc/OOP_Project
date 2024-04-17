@@ -95,3 +95,21 @@ def return_book():
         counter+=1
     if flag == False:
         print(f'No book with ISBN {return_isbn} found')
+
+def find_book_by_isbn():
+    find_isbn = input('Enter ISBN : ')
+
+    counter = 0
+    flag = False
+    # stops when ISBN matches or when every book has been iterated through
+    while flag == False and counter <  len(bookshelf):
+        for book in bookshelf:
+            if find_isbn == bookshelf[counter].get_isbn():
+                flag = True
+                # returns index of matching book
+                return counter
+            counter+=1
+    # returns -1 if not found
+    if flag == False:
+        print(f'No book with ISBN {find_isbn} found')
+        return '-1'
