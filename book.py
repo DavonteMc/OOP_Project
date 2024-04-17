@@ -171,5 +171,14 @@ def print_books():
     for book in bookshelf:
         print(book)
 
+#Added save_books() function 
+def save_books():
+    with open('books.csv','r+') as file:
+        saved_text = ''
+        for book in bookshelf:
+            saved_text = f'{book.get_isbn()},{book.get_title()},{book.get_author()},{book.get_genre()},{book.get_availability_t_or_f()}'
+            file.write(saved_text)
+
+
 
 
