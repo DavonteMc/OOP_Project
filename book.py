@@ -60,3 +60,21 @@ class Book:
     def __str__(self):
         return '{:<15}{:<26}{:<26}{:<21}{:<10}'.format(Book.get_isbn(self),Book.get_title(self),Book.get_author(self),Book.get_genre_name(self),Book.get_availability(self))
 
+MENU_HEADING = "Reader's Guild Library - Main Menu"
+MENU_OPTIONS = {1 : 'Search for Books',
+                2 : 'Borrow a book',
+                3 : 'Return a book',
+                0 : 'Exit the system'}
+
+def print_menu(MENU_HEADING, MENU_OPTIONS):
+    print(MENU_HEADING + '\n' + ('=' * 34))
+    for k,v in MENU_OPTIONS.items():
+        print(f'{k}. {v}')
+    check = True
+    while check == True:
+        uSelection = int(input('Enter your selection: ')) 
+        if uSelection > 3 or uSelection < 0:
+            check = True
+        else: 
+            check = False
+            return uSelection
