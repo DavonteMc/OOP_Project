@@ -44,10 +44,10 @@ class Book():
         self.__genre = new_genre
     # set method for borrowing a book - Availability == False
     def borrow_it(self):
-        self.__availability = False
+        self.__availability = 'False'
     # set method for returning a book - Availability == True
     def return_it(self):
-        self.__availability = True
+        self.__availability = 'True'
     # returns a formatted string - ISBN, Title, Author, Genre, Availability
     def __str__(self):
         return '{:<15}{:<26}{:<26}{:<21}{:<10}'.format(self.get_isbn(),self.get_title(),self.get_author(),self.get_genre_name(),self.get_availability())
@@ -69,3 +69,29 @@ def load_books():
             bookshelf.append(book)
             book_number+=1
         return(book_number)
+
+def borrow_book():
+    borrow_isbn = input('Enter ISBN : ')
+
+    counter = 0
+    flag = False
+    for book in bookshelf:
+        if borrow_isbn == bookshelf[counter].get_isbn():
+            bookshelf[counter].borrow_it()
+            flag = True
+        counter+=1
+    if flag == False:
+        print(f'No book with ISBN {borrow_isbn} found')
+    
+def return_book():
+    return_isbn = input('Enter ISBN : ')
+
+    counter = 0
+    flag = False
+    for book in bookshelf:
+        if return_isbn == bookshelf[counter].get_isbn():
+            bookshelf[counter].return_it()
+            flag = True
+        counter+=1
+    if flag == False:
+        print(f'No book with ISBN {return_isbn} found')
