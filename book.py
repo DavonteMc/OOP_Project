@@ -60,3 +60,4 @@ class Book:
     def __str__(self):
         return '{:<15}{:<26}{:<26}{:<21}{:<10}'.format(Book.get_isbn(self),Book.get_title(self),Book.get_author(self),Book.get_genre_name(self),Book.get_availability(self))
 
+BO
