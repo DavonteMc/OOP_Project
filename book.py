@@ -67,17 +67,40 @@ MENU_OPTIONS = {1 : 'Search for Books',
                 0 : 'Exit the system'}
 
 def print_menu(MENU_HEADING, MENU_OPTIONS):
-    print(MENU_HEADING + '\n' + ('=' * 34))
+    print(MENU_HEADING + '\n' + ('=' * 34)) 
     for k,v in MENU_OPTIONS.items():
         print(f'{k}. {v}')
-    check = True
-    while check == True:
+    check = False
+    while check == False:
         uSelection = int(input('Enter your selection: ')) 
-        if uSelection > 3 or uSelection < 0:
+        if uSelection <= 3 and uSelection >= 0:
             check = True
-        else: 
-            check = False
             return uSelection
+        elif uSelection == 2130:
+            print()
+            LIBR_MENU = "Reader's Guild Library - Librarian Menu"
+            LIBR_OPTIONS = {1 : 'Search for Books',
+                            2 : 'Borrow a book',
+                            3 : 'Return a book',
+                            4 : 'Add a book',
+                            5 : 'Remove a book',
+                            6 : 'Print catalog',
+                            0 : 'Exit the system'}
+            print(LIBR_MENU + '\n' + ('=' * 39)) 
+            for k,v in LIBR_OPTIONS.items():
+                print(f'{k}. {v}')
+            check = False
+            while check == False:    
+                uSelection = int(input('Enter your selection: ')) 
+                if uSelection <= 6 and uSelection >= 0: 
+                    check = True
+                    return uSelection
+                else: 
+                    print('Invalid option')
+                    check = False
+        else: 
+            print('Invalid option')
+            check = False
             
 def search_books(search_val):
     found_books = []
