@@ -113,3 +113,53 @@ def find_book_by_isbn():
     if flag == False:
         print(f'No book with ISBN {find_isbn} found')
         return '-1'
+
+def add_books():
+    add_isbn = input('Enter ISBN : ')
+    add_title = input('Enter Title : ')
+    add_author = input('Enter Author : ')
+
+    while True:
+        add_genre = input('Enter Genre : ')
+
+        match add_genre:
+            case 'Romance':
+                add_genre = 0
+                break
+            case 'Mystery':
+                add_genre = 1
+                break
+            case 'Science Fiction':
+                add_genre = 2
+                break
+            case 'Thriller':
+                add_genre = 3
+                break
+            case 'Young Adult':
+                add_genre = 4
+                break
+            case 'Children\'s Fiction':
+                add_genre = 5
+                break
+            case 'Self-help':
+                add_genre = 6
+                break
+            case 'Fantasy':
+                add_genre = 7
+                break
+            case 'Historical Fiction':
+                add_genre = 8
+                break
+            case 'Poetry':
+                add_genre = 9
+                break
+            case _:
+                print('Invalid Input')
+
+    book = Book(add_isbn,add_title,add_author,add_genre,'True')
+    bookshelf.append(book)
+
+
+
+load_books()
+add_books()
