@@ -78,3 +78,30 @@ def print_menu(MENU_HEADING, MENU_OPTIONS):
         else: 
             check = False
             return uSelection
+            
+def search_books(search_val):
+    found_books = []
+    counter = 0
+    while counter < len(bookshelf):
+        if (search_val.lower() in bookshelf[counter].get_title().lower() or 
+            search_val.lower() in bookshelf[counter].get_author().lower() or 
+            search_val.lower() in bookshelf[counter].get_genre_name().lower()):
+            found_books.append(bookshelf[counter])
+        counter += 1
+    
+    if found_books: # If the list is empty = False -> else  If the list has items = True -> return
+        counter = 0
+        for book in found_books:
+            print(found_books[counter])
+            counter += 1
+    else:
+        print('No matching books found.')
+
+def search_str():
+    print('- - Search for books -- ')
+    while True:
+        search = input('Enter search value: ')
+        if search.isalpha() == True:
+            return search
+
+search_books(search_str())
