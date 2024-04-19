@@ -159,19 +159,31 @@ def add_books():
     book = Book(add_isbn,add_title,add_author,add_genre,'True')
     bookshelf.append(book)
 
-#Added remove_book() function 
+'''
+Function name: Remove_book()
+Description: Receives book list. Searches for the book via isbn in the bookshelf. If isbn exists, book is removed from the booshelf
+Parameters: Find_book_by_isbn(): Receives an isbn number and searches through the bookshelf to see if book is present
+Outcome: Removes book from bookshelf
+'''
 def remove_book():
     remove_isbn = find_book_by_isbn()
     if remove_isbn != -1:
         del bookshelf[remove_isbn]
-
-#Added print_books() function
+'''
+Function name: print_books()
+Description: Prints out book information such as ISBN, Title, Author, Genre and Availability in string format
+Outcome: Searches for the book in bookshelf and if present will print out all information in a string format
+'''
 def print_books():
     print('{:<15}{:<26}{:<26}{:<21}{:<10}'.format('ISBN','Title','Author','Genre','Availability'))
     for book in bookshelf:
         print(book)
-
-#Added save_books() function 
+'''
+Function name: save_books()
+Description: Receives a book list and pathname to boooks.csv. Iterates over the list, formatting a comma separated string containing each book's attribute values
+             writes each string as a separate line to the file and returns number of books saved to the file
+Outcome: Overwrites existsing file in bookshelf with the new information
+'''
 def save_books():
     with open('books.csv','r+') as file:
         saved_text = ''
