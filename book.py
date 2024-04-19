@@ -1,3 +1,17 @@
+'''
+OOP Final Project: Classes 
+Descritption: This program will read a Books csv file containing a book's Isbn, Title, Author's name, Genre, Availability
+    The user will be given several options to acccess and alter various entries of the file
+    Options include: 
+        Searching for books in the existing library 
+        Borrowing books from the library, affecting their availability
+        Returning books to the library affetcing their availability 
+        Adding books to the existing library 
+        Removing books from the existing library 
+        Prinitng out a list of books that are present in the library 
+    The program contains basic checks to maintain formatting and ranges
+Program was made by Davonte Mclean, Devin Wheatley and Warren Fernandes 
+'''
 class Book():
     def __init__(self, isbn, title, author, genre, availability) -> None:
         self.__isbn = isbn
