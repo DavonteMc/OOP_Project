@@ -170,10 +170,11 @@ Outcome : Creates an iterable list of each book, and turns each book into a memb
           Returns the number of books
 '''
 def load_books():
+
     file = open('books.csv','r+')
     # creates a list with each item containing a book - [ISBN,Title,Author,Genre,Availability]
     file_contents_list = file.readlines()
-    
+
     global bookshelf
     bookshelf = []
 
@@ -185,6 +186,7 @@ def load_books():
         book = Book(file_contents_list[book_number][0],file_contents_list[book_number][1],file_contents_list[book_number][2],file_contents_list[book_number][3],file_contents_list[book_number][4])
         bookshelf.append(book)
         book_number+=1
+
     return(book_number)
 
 '''
@@ -252,8 +254,6 @@ Parameters : flag
 Outcome : Returns index # of matching book -- or -- prints fallback statement & returns -1
 '''
 def find_book_by_isbn():
-    load_books()
-
     find_isbn = input('Enter ISBN : ')
 
     counter = 0
@@ -345,11 +345,11 @@ def remove_book():
     load_books()
 
     print('- - Remove a book -- ')
-    remove_isbn = find_book_by_isbn()
-    if remove_isbn != -1:
-        del bookshelf[remove_isbn]
-        print(f'\'{bookshelf[remove_isbn].get_title()}\' with ISBN {bookshelf[remove_isbn].get_isbn()} successfully removed.\n')
-
+    remove_index = find_book_by_isbn()
+    if remove_index != -1:
+        print(f'\'{bookshelf[remove_index].get_title()}\' with ISBN {bookshelf[remove_index].get_isbn()} successfully removed.\n')
+        del bookshelf[remove_index]
+    
     save_books()
 '''
 Function Name : print_books
@@ -373,8 +373,7 @@ Description : Receives a book list and pathname to boooks.csv. Iterates over the
 Outcome : Overwrites existsing file in bookshelf with the new information
 '''
 def save_books():
-    with open('books.csv','r+') as file:
-        saved_text = ''
+    with open('books.csv','w') as file:
         for book in bookshelf:
             saved_text = f'{book.get_isbn()},{book.get_title()},{book.get_author()},{book.get_genre()},{book.get_availability_t_or_f()}'
             if saved_text.endswith('\n'):
